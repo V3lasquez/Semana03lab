@@ -8,7 +8,7 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid Margin="0,0,574,300">
         <Button Content="ListarDataTable" HorizontalAlignment="Left" Margin="29,32,0,0" VerticalAlignment="Top" Click="Button_Click"/>
-        <Button Content="ListarDataReader" HorizontalAlignment="Left" Margin="29,82,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <Button Content="ListarDataReader" HorizontalAlignment="Left" Margin="29,82,0,0" VerticalAlignment="Top" Click="Button_Click1"/>
         <DataGrid x:Name="dgvDemo" AutoGenerateColumns="True" Margin="228,214,-353,-218"/>
     </Grid>
 

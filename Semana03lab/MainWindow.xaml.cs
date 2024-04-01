@@ -56,5 +56,41 @@ namespace Semana03lab
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
+
+        private void Button_Click1(object sender, RoutedEventArgs e)
+        {
+            string connectionString = "Data Source=DESKTOP-F093S42\\SQLEXPRESS;Initial Catalog=Semana03;User Id=userTecsup;Password=userTecsup03";
+            List<Estudiante> clientes = new List<Estudiante>();
+            try
+            {
+                //Cadena de conexión
+                SqlConnection connection = new SqlConnection(connectionString);
+                connection.Open();
+
+                //Comandos de TRANSACT SQL
+                SqlCommand command = new SqlCommand("SELECT * FROM Students", connection);
+
+                //CONECTADA
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    int StudentId = reader.GetInt32(reader.GetOrdinal("StudentId"));
+                    string FirstName = reader.GetString("FirstName");
+                    string LastName = reader.GetString("LastName");
+
+                    clientes.Add(new Estudiante { studentId = StudentId, firstName = FirstName, lastName = LastName });
+
+                }
+                dgvDemo.ItemsSource = clientes;
+
+                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                // Manejar cualquier excepción que pueda ocurrir durante la recuperación o llenado de datos
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
     }
 }
